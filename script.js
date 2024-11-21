@@ -33,9 +33,8 @@ d3.csv("Fully_Combined_State-Level_Data.csv").then(data => {
         d.value = +d.value;
     });
 
-    // Extract unique variables, percentiles, and states
+    // Extract unique variables and states
     const variables = [...new Set(data.map(d => d.variable))];
-    const percentiles = [...new Set(data.map(d => d.percentile))];
     const states = [...new Set(data.map(d => d.country))];
 
     // Populate metric dropdown
@@ -44,17 +43,29 @@ d3.csv("Fully_Combined_State-Level_Data.csv").then(data => {
         variableSelect.append("option").attr("value", variable).text(variable);
     });
 
-    // Populate percentile dropdown
-    const percentileSelect = d3.select("#percentile-select");
-    percentiles.forEach(percentile => {
-        percentileSelect.append("option").attr("value", percentile).text(percentile);
-    });
-
     // Populate state dropdown
     const stateSelect = d3.select("#state-select");
     states.forEach(state => {
         stateSelect.append("option").attr("value", state).text(state);
     });
+
+    // Dynamically update percentile dropdown
+    const percentileSelect = d3.select("#percentile-select");
+
+    const updatePercentiles = () => {
+        const selectedVariable = variableSelect.property("value");
+
+        // Get unique percentiles for the selected variable
+        const relevantPercentiles = [...new Set(data
+            .filter(d => d.variable === selectedVariable)
+            .map(d => d.percentile))];
+
+        // Clear and repopulate the percentile dropdown
+        percentileSelect.selectAll("option").remove();
+        relevantPercentiles.forEach(percentile => {
+            percentileSelect.append("option").attr("value", percentile).text(percentile);
+        });
+    };
 
     // Set up chart
     const updateChart = () => {
@@ -116,10 +127,15 @@ d3.csv("Fully_Combined_State-Level_Data.csv").then(data => {
             });
     };
 
-    variableSelect.on("change", updateChart);
+    variableSelect.on("change", () => {
+        updatePercentiles(); // Update percentiles when the variable changes
+        updateChart(); // Update chart
+    });
+
     percentileSelect.on("change", updateChart);
     stateSelect.on("change", updateChart);
 
-    // Initial chart update
-    updateChart();
-});
+    // Initial setup
+    updatePercentiles(); // Populate initial percentiles
+    updateChart(); // Draw initial chart
+}); 
