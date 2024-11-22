@@ -3,12 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>State-Level Data Visualization</title>
+    <title>Exploring Economic Inequality in the U.S.</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 40px;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-bottom: 1px solid #ddd;
+        }
+        section {
+            padding: 50px;
+            max-width: 800px;
+            margin: auto;
+        }
+        .visualization {
+            margin-top: 30px;
+            height: 500px;
         }
         svg {
             font: 12px sans-serif;
@@ -29,18 +46,62 @@
     </style>
 </head>
 <body>
-    <h1>State-Level Data Visualization</h1>
-    <div>
-        <label for="variable-select">Select Metric:</label>
-        <select id="variable-select"></select>
+    <header>
+        <h1>Exploring Economic Inequality in the U.S.</h1>
+        <p>
+            This project explores economic inequality in the United States, analyzing trends in income and wealth distribution across different states, demographics, and over time. Scroll down to discover insights and visualizations.
+        </p>
+    </header>
 
-        <label for="percentile-select">Select Percentile:</label>
-        <select id="percentile-select"></select>
+    <!-- Introduction -->
+    <section id="introduction">
+        <h2>Introduction</h2>
+        <p>
+            Economic inequality in the United States has been a growing concern. By examining data from various sources, this project aims to uncover trends and disparities that shape the economic landscape. Through interactive visualizations, we aim to make these complex trends accessible and engaging.
+        </p>
+    </section>
 
-        <label for="state-select">Select State:</label>
-        <select id="state-select" multiple></select>
-    </div>
-    <div id="chart"></div>
+    <!-- Section 1: State-Level Visualization -->
+    <section id="state-visualization">
+        <h2>State-Level Data Visualization</h2>
+        <p>
+            The following visualization provides insights into economic trends across U.S. states. Use the dropdown menus to explore different metrics and how they vary over time.
+        </p>
+        <div>
+            <label for="variable-select">Select Metric:</label>
+            <select id="variable-select"></select>
+
+            <label for="percentile-select">Select Percentile:</label>
+            <select id="percentile-select"></select>
+
+            <label for="state-select">Select State:</label>
+            <select id="state-select" multiple></select>
+        </div>
+        <div id="chart" class="visualization"></div>
+    </section>
+
+    <!-- Section 2 -->
+    <section id="section-2">
+        <h2>Section 2: Placeholder for Visualization</h2>
+        <p>
+            This section will include a visualization related to demographic breakdowns. Explore how different groups are impacted by economic inequality.
+        </p>
+        <div id="chart2" class="visualization">
+            <!-- Placeholder for future visualization -->
+        </div>
+    </section>
+
+    <!-- Section 3 -->
+    <section id="section-3">
+        <h2>Section 3: Placeholder for Visualization</h2>
+        <p>
+            This section will focus on a comparison of income and wealth trends across different time periods. Check back soon for the completed visualization.
+        </p>
+        <div id="chart3" class="visualization">
+            <!-- Placeholder for future visualization -->
+        </div>
+    </section>
+
     <script src="script.js"></script>
 </body>
 </html>
