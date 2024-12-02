@@ -89,24 +89,49 @@
         </section>
     </section>
 
-    <!-- Section 1: State-Level Visualization -->
-    <section id="state-visualization">
-        <h2>State-Level Data Visualization</h2>
-        <p>
-            The following visualization provides insights into economic trends across U.S. states. Use the dropdown menus to explore different metrics and how they vary over time.
-        </p>
-        <div>
-            <label for="variable-select">Select Metric:</label>
-            <select id="variable-select"></select>
+<!-- Section 1: State-Level Visualization -->
+<section id="state-visualization">
+    <h2>State-Level Data Visualization</h2>
+    <p>
+        The following visualization provides insights into economic trends across U.S. states. Use the dropdown menus to explore different metrics and how they vary over time.
+    </p>
+    <div>
+        <label for="variable-select">Select Metric:</label>
+        <select id="variable-select"></select>
 
-            <label for="percentile-select">Select Percentile:</label>
-            <select id="percentile-select"></select>
+        <label for="percentile-select">Select Percentile:</label>
+        <select id="percentile-select"></select>
 
-            <label for="state-select">Select State:</label>
-            <select id="state-select" multiple></select>
-        </div>
-        <div id="chart" class="visualization"></div>
-    </section>
+        <label for="state-select">Select State:</label>
+        <select id="state-select" multiple></select>
+    </div>
+    <div id="chart" class="visualization" style="height: 600px; margin-bottom: 20px;"></div>
+
+    <!-- Standalone Legend -->
+    <div id="state-legend" style="margin-top: 20px; padding: 10px; background-color: white; border: 1px solid #ccc; width: fit-content;">
+        <h4>Legend: Metric Descriptions</h4>
+        <ul id="state-legend-list" style="list-style: none; padding: 0;">
+            <li>
+                <strong>npopult992:</strong> Total Population
+            </li>
+            <li>
+                <strong>afiinct992:</strong> Average income between two percintiles
+            </li>
+            <li>
+                <strong>mfiinct992:</strong> Total value of all wealth in a state
+            </li>
+            <li>
+                <strong>ntaxret992:</strong> Total tax reports filed containing income information
+            </li>
+            <li>
+                <strong>sfiinct992:</strong> Proportion of households with single family income
+            </li>
+            <li>
+                <strong>sptinct992:</strong> Proportion of state-wide income contributed by percentile group
+            </li>
+        </ul>
+    </div>
+</section>
 
     <!-- Section 2 -->
 <section id="section-2">
