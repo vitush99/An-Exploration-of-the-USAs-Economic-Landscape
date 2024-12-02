@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exploring Economic Inequality in the U.S.</title>
+    <title>A Visual Exploration of the United States' Economic Landscape</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -26,6 +30,14 @@
         .visualization {
             margin-top: 30px;
             height: 500px;
+        }
+        #chart-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .visualization {
+            flex: 1; /* Ensure charts take equal space */
         }
         footer {
             text-align: center;
@@ -53,9 +65,9 @@
 </head>
 <body>
     <header>
-        <h1>Exploring Economic Inequality in the U.S.</h1>
+        <h1>A Visual Exploration of USA's Economic Landscape</h1>
         <p>
-            This project explores economic inequality in the United States, analyzing trends in income and wealth distribution across different states, demographics, and over time. Scroll down to discover insights and visualizations.
+            Welcome to A Visual Exploration of the United States' Economic Landscape, an interactive journey into the socio-economic trends that shape the nation.
         </p>
     </header>
 
@@ -65,8 +77,15 @@
             <img src="image_1.jpeg" alt="Economic Inequality Visualization" style="max-width: 100%; height: auto; margin-top: 20px;">
             <h2>Introduction</h2>
             <p>
-                Economic inequality in the United States has been a growing concern. By examining data from various sources, this project aims to uncover trends and disparities that shape the economic landscape. Through interactive visualizations, we aim to make these complex trends accessible and engaging.
-            </p>
+                This project aims to demystify complex economic indicators—such as household income, employment rates, and GDP per capita—through engaging visualizations and interactive tools.
+
+                The United States is a vast and diverse country, with each state contributing uniquely to the overall economic picture. By combining data with dynamic visualizations, this project offers an intuitive way to explore how these indicators vary across states and over time. Whether you're curious about income disparities, unemployment trends, or the economic growth of individual states, this explorable explanation will guide you through the data in a way that's both accessible and insightful.
+
+                Through a series of interactive diagrams, you'll be able to:
+
+                Compare household income levels across family types.
+                Analyze unemployment and employment trends through color-coded maps.
+                Investigate GDP per capita across states and how it has changed over the years.
         </section>
     </section>
 
@@ -90,37 +109,153 @@
     </section>
 
     <!-- Section 2 -->
-    <section id="section-2">
-        <h2>Section 2: Placeholder for Visualization</h2>
-        <p>
-            This section will include a visualization related to demographic breakdowns. Explore how different groups are impacted by economic inequality.
-        </p>
-        <div id="chart2" class="visualization">
-            <!-- Placeholder for future visualization -->
+<section id="section-2">
+    <h2>Explore Household Income</h2>
+    <p>
+        Compare household median income across different categories dynamically.
+    </p>
+    <div class="controls">
+        <div>
+            <label for="age-year-select">Year to Compare:</label>
+            <input type="radio" id="age-year-2022" name="age-year" value="2022" checked> 2022
+            <input type="radio" id="age-year-2023" name="age-year" value="2023"> 2023
         </div>
-    </section>
+        <div>
+            <label for="option-1-select">Option 1:</label>
+            <select id="option-1-select">
+                <option value="Family Household - Total">Family Household - Total</option>
+                <option value="Family Household - Married Couple">Family Household - Married Couple</option>
+                <option value="Family Household - Female Householder (no spouse)">Family Household - Female Householder (no spouse)</option>
+                <option value="Family Household - Male Householder (no spouse)">Family Household - Male Householder (no spouse)</option>
+                <option value="Non-Family Household - Total">Non-Family Household - Female Householder</option>
+                <option value="Non-Family Household - Female Householder">Non-Family Household - Female Householder</option>
+                <option value="Non-Family Household - Male Householder">Non-Family Household - Male Householder</option>
+            </select>
+        </div>
+        <div>
+            <label for="option-2-select">Option 2:</label>
+            <select id="option-2-select">
+                <option value="Family Household - Total">Family Household - Total</option>
+                <option value="Family Household - Married Couple">Family Household - Married Couple</option>
+                <option value="Family Household - Female Householder (no spouse)">Family Household - Female Householder (no spouse)</option>
+                <option value="Family Household - Male Householder (no spouse)">Family Household - Male Householder (no spouse)</option>
+                <option value="Non-Family Household - Total">Non-Family Household - Female Householder</option>
+                <option value="Non-Family Household - Female Householder">Non-Family Household - Female Householder</option>
+                <option value="Non-Family Household - Male Householder">Non-Family Household - Male Householder</option>
+            </select>
+        </div>
+        <div>
+            <label for="plot-all">Plot All Categories:</label>
+            <input type="checkbox" id="plot-all">
+        </div>
+    </div>
+    <div id="chart-container">
+        <div id="chart1" class="visualization"></div>
+        <div id="chart2" class="visualization"></div>
+    </div>
+    <p>
+        This visualization helps compare different household types and their median incomes dynamically. Select options or enable "Plot All Categories" to explore all at once.
+    </p>
+</section>
+
 
     <!-- Section 3 -->
     <section id="section-3">
-        <h2>Section 3: Placeholder for Visualization</h2>
+        <h2>What About Age?</h2>
         <p>
-            This section will use data from other countries and through a world map visualization, we can compare statistics by country using color-coding. User will be able to click on countries on map and explore the different trends.
+            Compare median income across different ages in the country dynamically.
         </p>
-        <div id="chart3" class="visualization">
-            <!-- Placeholder for future visualization -->
+        <div class="controls">
+            <div>
+                <label for="year-select">Year to Compare:</label>
+                <input type="radio" id="year-2022" name="year" value="2022" checked> 2022
+                <input type="radio" id="year-2023" name="year" value="2023"> 2023
+            </div>
+            <div>
+                <label for="age-option-1-select">Option 1:</label>
+                <select id="age-option-1-select">
+                    <option value="15-24">15-24</option>
+                    <option value="25-34">25-34</option>
+                    <option value="35-44">35-44</option>
+                    <option value="45-54">45-54</option>
+                    <option value="55-64">55-64</option>
+                    <option value="65+">65+</option>
+                </select>
+            </div>
+            <div>
+                <label for="age-option-2-select">Option 2:</label>
+                <select id="age-option-2-select">
+                    <option value="15-24">15-24</option>
+                    <option value="25-34">25-34</option>
+                    <option value="35-44">35-44</option>
+                    <option value="45-54">45-54</option>
+                    <option value="55-64">55-64</option>
+                    <option value="65+">65+</option>
+                </select>
+            </div>
+            <div>
+                <label for="age-plot-all">Plot All Categories:</label>
+                <input type="checkbox" id="age-plot-all">
+            </div>
         </div>
+        <div id="chart-container">
+            <div id="age-chart1" class="visualization"></div>
+            <div id="age-chart2" class="visualization"></div>
+        </div>
+        <p>
+            This visualization helps compare different age groups and their median incomes dynamically. Select options or enable "Plot All Categories" to explore all at once.
+        </p>
     </section>
 
     <!-- Section 4 -->
     <section id="section-4">
-        <h2>Section 4: Placeholder for Visualization</h2>
+        <h2>Let us now compare across states!</h2>
         <p>
-            This section will include a visualization that allows user to directly compare between countries in the world head to head. Side by side plots.
+            We can compare the economic situtation across various states now and see how each state differs and contributes to our overall economic situatuation.
         </p>
-        <div id="chart4" class="visualization">
+    </section>
+
+    <!-- Section 5 -->
+    <section id="section-5">
+        <h2>Unemployment Rates Across the United States</h2>
+        <p>
+            Let us take a look at the United States map and explore each state!
+        </p>
+        <div id="legend" style="margin-top: 20px; padding: 10px; background-color: white; border: 1px solid #ccc; width: 200px;"></div>
+        <div id="chart5" class="visualization" style="height: 600px;"></div>
+    </section>
+
+     <!-- Section 6 -->
+     <section id="section-6">
+        <h2>Employed Numbers Across the United States</h2>
+        <p>
+            Explore total employment across the United States in a visually dynamic map.
+        </p>
+        <div id="employment-map" class="visualization" style="height: 600px;"></div>
+        <div id="legend-employment" style="margin-top: 20px; padding: 10px; background-color: white; border: 1px solid #ccc; width: 200px;"></div>
             <!-- Placeholder for future visualization -->
+            
         </div>
     </section>
+
+    <!-- Section 7 -->
+    <section id="section-6">
+        <h2>Understanding GDP</h2>
+        <p>
+            Explore what GDP is and how each state contributes to our country's GDP. 
+        </p>
+    </section>
+
+    <!-- Section 8 -->
+    <section id="section-8">
+        <h2>GDP of Each State Over Time</h2>
+        <p>
+            Explore total employment across the United States in a visually dynamic map.
+        </p>
+        <div id="gdp-chart" class="visualization"></div>
+        <button id="play-button">Play</button>
+    </section>
+
 
     <!-- Footer: Conclusion -->
     <footer id="conclusion">

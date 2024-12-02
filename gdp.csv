@@ -1,0 +1,308 @@
+State,Year,GSP
+District of Columbia,2006,124363
+District of Columbia,2010,174500
+District of Columbia,2014,159386
+District of Columbia,2016,160643
+District of Columbia,2019,200277
+District of Columbia,2022,241610
+Massachusetts,2006,46621
+Massachusetts,2010,58108
+Massachusetts,2014,63005
+Massachusetts,2016,65281
+Massachusetts,2019,86542
+Massachusetts,2022,98596
+Connecticut,2006,50332
+Connecticut,2010,64833
+Connecticut,2014,64676
+Connecticut,2016,63636
+Connecticut,2019,81055
+Connecticut,2022,88755
+California,2006,41663
+California,2010,51914
+California,2014,54462
+California,2016,59117
+California,2019,80563
+California,2022,92190
+Washington,2006,37666
+Washington,2010,52403
+Washington,2014,55298
+Washington,2016,57727
+Washington,2019,80170
+Washington,2022,93184
+Delaware,2006,59288
+Delaware,2010,69667
+Delaware,2014,60551
+Delaware,2016,64054
+Delaware,2019,78468
+Delaware,2022,85944
+Alaska,2006,43748
+Alaska,2010,65143
+Alaska,2014,66160
+Alaska,2016,63317
+Alaska,2019,76220
+Alaska,2022,86722
+North Dakota,2006,34446
+North Dakota,2010,47714
+North Dakota,2014,65225
+North Dakota,2016,64136
+North Dakota,2019,75321
+North Dakota,2022,94021
+New York,2006,46617
+New York,2010,57423
+New York,2014,64818
+New York,2016,64810
+New York,2019,73463
+New York,2022,104343
+New Jersey,2006,44885
+New Jersey,2010,56477
+New Jersey,2014,56405
+New Jersey,2016,56565
+New Jersey,2019,73451
+New Jersey,2022,80484
+Maryland,2006,39161
+Maryland,2010,51724
+Maryland,2014,53759
+Maryland,2016,56070
+Maryland,2019,71838
+Maryland,2022,76271
+Illinois,2006,39514
+Illinois,2010,50328
+Illinois,2014,52827
+Illinois,2016,54404
+Illinois,2019,71727
+Illinois,2022,82125
+Colorado,2006,41798
+Colorado,2010,51940
+Colorado,2014,52214
+Colorado,2016,52567
+Colorado,2019,68828
+Colorado,2022,82941
+Minnesota,2006,41295
+Minnesota,2010,50396
+Minnesota,2014,52801
+Minnesota,2016,54414
+Minnesota,2019,68427
+Minnesota,2022,78098
+Virginia,2006,41702
+Virginia,2010,53463
+Virginia,2014,51338
+Virginia,2016,51643
+Virginia,2019,65824
+Virginia,2022,74784
+Hawaii,2006,38083
+Hawaii,2010,49124
+Hawaii,2014,49686
+Hawaii,2016,51819
+Hawaii,2019,69593
+Hawaii,2022,68198
+Wyoming,2006,39130
+Wyoming,2010,63667
+Wyoming,2014,64309
+Wyoming,2016,60004
+Wyoming,2019,68757
+Wyoming,2022,81856
+New Hampshire,2006,39616
+New Hampshire,2010,47835
+New Hampshire,2014,49951
+New Hampshire,2016,51411
+New Hampshire,2019,66069
+New Hampshire,2022,75553
+Nebraska,2006,36441
+Nebraska,2010,49778
+Nebraska,2014,52724
+Nebraska,2016,53949
+Nebraska,2019,66737
+Nebraska,2022,82169
+Texas,2006,36920
+Texas,2010,45940
+Texas,2014,54433
+Texas,2016,53129
+Texas,2019,66149
+Texas,2022,78455
+Oregon,2006,37633
+Oregon,2010,44447
+Oregon,2014,51329
+Oregon,2016,51066
+Oregon,2019,60558
+Oregon,2022,70546
+Iowa,2006,35662
+Iowa,2010,49067
+Iowa,2014,49075
+Iowa,2016,51912
+Iowa,2019,62493
+Iowa,2022,72210
+Pennsylvania,2006,34828
+Pennsylvania,2010,45323
+Pennsylvania,2014,47637
+Pennsylvania,2016,50665
+Pennsylvania,2019,64412
+Pennsylvania,2022,71160
+North Carolina,2006,36489
+North Carolina,2010,42884
+North Carolina,2014,44281
+North Carolina,2016,44511
+North Carolina,2019,56862
+North Carolina,2022,68238
+Rhode Island,2006,36292
+Rhode Island,2010,45000
+Rhode Island,2014,47901
+Rhode Island,2016,47739
+Rhode Island,2019,60830
+Rhode Island,2022,65283
+South Dakota,2006,35842
+South Dakota,2010,49875
+South Dakota,2014,46688
+South Dakota,2016,47808
+South Dakota,2019,61104
+South Dakota,2022,74268
+Nevada,2006,39813
+Nevada,2010,47222
+Nevada,2014,42539
+Nevada,2016,43557
+Nevada,2019,58570
+Nevada,2022,76946
+Wisconsin,2006,35390
+Wisconsin,2010,44105
+Wisconsin,2014,46665
+Wisconsin,2016,47833
+Wisconsin,2019,60425
+Wisconsin,2022,68186
+Georgia,2006,35362
+Georgia,2010,41711
+Georgia,2014,43131
+Georgia,2016,45140
+Georgia,2019,58986
+Georgia,2022,69248
+Ohio,2006,34609
+Ohio,2010,42035
+Ohio,2014,45887
+Ohio,2016,47633
+Ohio,2019,60464
+Ohio,2022,69978
+Kansas,2006,34242
+Kansas,2010,44310
+Kansas,2014,45765
+Kansas,2016,46217
+Kansas,2019,60310
+Kansas,2022,71726
+Indiana,2006,34058
+Indiana,2010,41169
+Indiana,2014,43861
+Indiana,2016,45977
+Indiana,2019,56702
+Indiana,2022,66698
+Tennessee,2006,34321
+Tennessee,2010,39730
+Tennessee,2014,42115
+Tennessee,2016,43688
+Tennessee,2019,56451
+Tennessee,2022,67470
+Vermont,2006,34472
+Vermont,2010,44000
+Vermont,2014,43354
+Vermont,2016,43984
+Vermont,2019,56525
+Vermont,2022,62771
+Florida,2006,33718
+Florida,2010,40106
+Florida,2014,38690
+Florida,2016,39506
+Florida,2019,51745
+Florida,2022,62445
+Michigan,2006,33468
+Michigan,2010,37616
+Michigan,2014,42110
+Michigan,2016,43665
+Michigan,2019,54928
+Michigan,2022,61859
+Missouri,2006,33297
+Missouri,2010,41117
+Missouri,2014,42854
+Missouri,2016,43004
+Missouri,2019,54879
+Missouri,2022,63117
+Arizona,2006,33441
+Arizona,2010,40828
+Arizona,2014,38743
+Arizona,2016,38985
+Arizona,2019,51179
+Arizona,2022,62364
+Louisiana,2006,32923
+Louisiana,2010,47467
+Louisiana,2014,46448
+Louisiana,2016,44451
+Louisiana,2019,57445
+Louisiana,2022,61310
+Utah,2006,32357
+Utah,2010,41750
+Utah,2014,43555
+Utah,2016,44893
+Utah,2019,49892
+Utah,2022,73408
+New Mexico,2006,31986
+New Mexico,2010,35952
+New Mexico,2014,40081
+New Mexico,2016,41559
+New Mexico,2019,50022
+New Mexico,2022,57783
+Alabama,2006,30896
+Alabama,2010,36333
+Alabama,2014,37593
+Alabama,2016,37402
+Alabama,2019,47735
+Alabama,2022,54750
+Maine,2006,30305
+Maine,2010,40923
+Maine,2014,38327
+Maine,2016,38956
+Maine,2019,50915
+Maine,2022,60994
+Kentucky,2006,29842
+Kentucky,2010,37535
+Kentucky,2014,38938
+Kentucky,2016,38950
+Kentucky,2019,48697
+Kentucky,2022,57668
+Oklahoma,2006,29697
+Oklahoma,2010,42237
+Oklahoma,2014,41871
+Oklahoma,2016,44356
+Oklahoma,2019,52409
+Oklahoma,2022,59837
+South Carolina,2006,29642
+South Carolina,2010,35717
+South Carolina,2014,36125
+South Carolina,2016,37075
+South Carolina,2019,48547
+South Carolina,2022,56010
+Idaho,2006,29545
+Idaho,2010,34250
+Idaho,2014,35235
+Idaho,2016,36056
+Idaho,2019,46043
+Idaho,2022,56495
+Montana,2006,27942
+Montana,2010,37200
+Montana,2014,38539
+Montana,2016,39763
+Montana,2019,49540
+Montana,2022,57900
+Arkansas,2006,27875
+Arkansas,2010,40828
+Arkansas,2014,37334
+Arkansas,2016,36524
+Arkansas,2019,44808
+Arkansas,2022,52248
+West Virginia,2006,24748
+West Virginia,2010,35053
+West Virginia,2014,36769
+West Virginia,2016,36244
+West Virginia,2019,43806
+West Virginia,2022,53848
+Mississippi,2006,24062
+Mississippi,2010,32967
+Mississippi,2014,31551
+Mississippi,2016,32242
+Mississippi,2019,40464
+Mississippi,2022,47189
+
