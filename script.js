@@ -66,66 +66,104 @@ d3.csv("Fully_Combined_State-Level_Data.csv").then(data => {
             percentileSelect.append("option").attr("value", percentile).text(percentile);
         });
     };
-
-    // Set up chart
-    const updateChart = () => {
-        const selectedVariable = variableSelect.property("value");
-        const selectedPercentile = percentileSelect.property("value");
-        const selectedStates = Array.from(stateSelect.node().selectedOptions).map(option => option.value);
-
-        // Filter data
-        const filteredData = data.filter(
-            d =>
-                d.variable === selectedVariable &&
-                d.percentile === selectedPercentile &&
-                selectedStates.includes(d.country)
-        );
-
-        if (filteredData.length === 0) {
-            svg.selectAll("*").remove(); // Clear chart
-            return;
-        }
-
-        // Update scales
-        xScale.domain(d3.extent(filteredData, d => d.year));
-        yScale.domain([0, d3.max(filteredData, d => d.value)]);
-
-        // Draw axes
-        svg.selectAll(".x-axis").remove();
-        svg.append("g")
-            .attr("class", "x-axis")
-            .attr("transform", `translate(0,${height})`)
-            .call(xAxis);
-
-        svg.selectAll(".y-axis").remove();
-        svg.append("g")
-            .attr("class", "y-axis")
-            .call(yAxis);
-
-        // Draw lines
-        const line = d3.line()
-            .x(d => xScale(d.year))
-            .y(d => yScale(d.value));
-
-        const groupedData = d3.group(filteredData, d => d.country);
-
-        svg.selectAll(".line").remove();
-        svg.selectAll(".line")
-            .data(groupedData)
-            .enter()
-            .append("path")
-            .attr("class", "line")
-            .attr("d", ([state, values]) => line(values))
-            .style("stroke", ([state]) => colorScale(state))
-            .style("fill", "none")
-            .on("mouseover", ([state]) => {
-                tooltip.transition().duration(200).style("opacity", 1);
-                tooltip.html(state).style("left", `${d3.event.pageX}px`).style("top", `${d3.event.pageY - 28}px`);
-            })
-            .on("mouseout", () => {
-                tooltip.transition().duration(200).style("opacity", 0);
-            });
+    const axisLabels = {
+        npopult992: { x: "Year", y: "Population" },
+        afiinct992: { x: "Year", y: "Average Final Income" },
+        mfiinct992: { x: "Year", y: "Total Wealth" },
+        ntxaret992: { x: "Year", y: "Number of tax Returns" },
+        sfiinct992: { x: "Year", y: "Proportion" },
+        sptinct992: { x: "Year", y: "Proportion" },
     };
+
+const width = 800 - margin.left - margin.right; // Reduced width
+    
+// Add axis labels
+svg.append("text")
+.attr("class", "x-axis-label")
+.attr("text-anchor", "middle")
+.attr("transform", `translate(${width / 2}, ${height + margin.bottom - 10})`)
+.text("Year"); // Default text for x-axis
+
+svg.append("text")
+    .attr("class", "y-axis-label")
+    .attr("text-anchor", "middle")
+    .attr("transform", `translate(${-margin.left + 10}, ${height / 2}) rotate(-90)`) // Shifted label further left
+    .text("Value"); // Default text for y-axis
+
+
+// Update Chart
+const updateChart = () => {
+const selectedVariable = variableSelect.property("value");
+const selectedPercentile = percentileSelect.property("value");
+const selectedStates = Array.from(stateSelect.node().selectedOptions).map(option => option.value);
+
+// Log selected values to debug
+console.log("Selected Variable:", selectedVariable);
+console.log("Axis Labels:", axisLabels[selectedVariable]);
+
+// Filter data
+const filteredData = data.filter(
+    d =>
+        d.variable === selectedVariable &&
+        d.percentile === selectedPercentile &&
+        selectedStates.includes(d.country)
+);
+
+if (filteredData.length === 0) {
+    svg.selectAll(".line").remove(); // Clear lines
+    return;
+}
+
+// Update scales
+xScale.domain(d3.extent(filteredData, d => d.year));
+yScale.domain([0, d3.max(filteredData, d => d.value)]);
+
+// Draw axes
+svg.selectAll(".x-axis").remove();
+svg.append("g")
+    .attr("class", "x-axis")
+    .attr("transform", `translate(0,${height})`)
+    .call(xAxis);
+
+svg.selectAll(".y-axis").remove();
+svg.append("g")
+    .attr("class", "y-axis")
+    .attr("transform", `translate(0, 0)`) 
+    .call(yAxis);
+
+// Update axis labels using axisLabels object
+svg.select(".x-axis-label")
+    .text(axisLabels[selectedVariable]?.x || "Year");
+
+svg.select(".y-axis-label")
+    .text(axisLabels[selectedVariable]?.y || "Value");
+
+// Draw lines
+const line = d3.line()
+    .x(d => xScale(d.year))
+    .y(d => yScale(d.value));
+
+const groupedData = d3.group(filteredData, d => d.country);
+
+svg.selectAll(".line").remove();
+svg.selectAll(".line")
+    .data(groupedData)
+    .enter()
+    .append("path")
+    .attr("class", "line")
+    .attr("d", ([state, values]) => line(values))
+    .style("stroke", ([state]) => colorScale(state))
+    .style("fill", "none")
+    .on("mouseover", ([state]) => {
+        tooltip.transition().duration(200).style("opacity", 1);
+        tooltip.html(state)
+            .style("left", `${d3.event.pageX}px`)
+            .style("top", `${d3.event.pageY - 28}px`);
+    })
+    .on("mouseout", () => {
+        tooltip.transition().duration(200).style("opacity", 0);
+    });
+};
 
     variableSelect.on("change", () => {
         updatePercentiles(); // Update percentiles when the variable changes
