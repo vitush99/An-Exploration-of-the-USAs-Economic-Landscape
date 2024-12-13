@@ -168,7 +168,7 @@ d3.csv("household_income.csv").then(data => {
     });
 
     const updateCharts = () => {
-        const selectedYear = document.querySelector('input[name="year"]:checked').value;
+        const selectedYear = document.querySelector('input[name="house-year"]:checked').value;
         const plotAll = document.querySelector("#plot-all").checked;
         const option1 = document.querySelector("#option-1-select").value;
         const option2 = document.querySelector("#option-2-select").value;
@@ -227,13 +227,28 @@ d3.csv("household_income.csv").then(data => {
         .attr("width", x.bandwidth())
         .attr("height", d => height2 - y(d["Median Income(dollars)"]))
         .attr("fill", (d, i) => d3.schemeCategory10[i % 10])
+        // .on("mouseover", (event, d) => {
+        //     tooltip.transition().duration(200).style("opacity", 1);
+        //     tooltip.html(`<strong>${d["Household Type"]}</strong><br>Median Income: $${d["Median Income(dollars)"]}`)
+        //         .style("left", `${event.pageX + 10}px`)
+        //         .style("top", `${event.pageY - 28}px`);
+        // })
+        // .on("mouseout", () => {
+        //     tooltip.transition().duration(200).style("opacity", 0);
+        // });
+
         .on("mouseover", (event, d) => {
+            // Show the tooltip
             tooltip.transition().duration(200).style("opacity", 1);
-            tooltip.html(`<strong>${d["Household Type"]}</strong><br>Median Income: $${d["Median Income(dollars)"]}`)
-                .style("left", `${event.pageX + 10}px`)
-                .style("top", `${event.pageY - 28}px`);
+        
+            // Set tooltip content and position it near the mouse pointer
+            tooltip
+                .html(`<strong>${d["Household Type"] || d["Age Group"]}</strong><br>Median Income: $${d["Median Income(dollars)"]}`)
+                .style("left", `${event.pageX + 10}px`) // Position 10px to the right of the mouse
+                .style("top", `${event.pageY - 20}px`); // Position 20px above the mouse
         })
         .on("mouseout", () => {
+            // Hide the tooltip
             tooltip.transition().duration(200).style("opacity", 0);
         });
 
@@ -245,7 +260,7 @@ d3.csv("household_income.csv").then(data => {
             .text(title);
     };
 
-    document.querySelectorAll('input[name="year"]').forEach(input => input.addEventListener("change", updateCharts));
+    document.querySelectorAll('input[name="house-year"]').forEach(input => input.addEventListener("change", updateCharts));
     document.querySelector("#option-1-select").addEventListener("change", updateCharts);
     document.querySelector("#option-2-select").addEventListener("change", updateCharts);
     document.querySelector("#plot-all").addEventListener("change", updateCharts);
@@ -338,17 +353,31 @@ d3.csv("age_income.csv").then(data => {
             .attr("width", x.bandwidth())
             .attr("height", d => height3 - y(d["Median Income(dollars)"]))
             .attr("fill", (d, i) => d3.schemeCategory10[i % 10])
+            // .on("mouseover", (event, d) => {
+            //     d3.select(".tooltip")
+            //         .transition()
+            //         .duration(200)
+            //         .style("opacity", 1)
+            //         .html(`<strong>${d["Age Group"]}</strong><br>Median Income: $${d["Median Income(dollars)"]}`)
+            //         .style("left", `${event.pageX + 10}px`)
+            //         .style("top", `${event.pageY - 28}px`);
+            // })
+            // .on("mouseout", () => {
+            //     d3.select(".tooltip").transition().duration(200).style("opacity", 0);
+            // });
             .on("mouseover", (event, d) => {
-                d3.select(".tooltip")
-                    .transition()
-                    .duration(200)
-                    .style("opacity", 1)
-                    .html(`<strong>${d["Age Group"]}</strong><br>Median Income: $${d["Median Income(dollars)"]}`)
-                    .style("left", `${event.pageX + 10}px`)
-                    .style("top", `${event.pageY - 28}px`);
+                // Show the tooltip
+                tooltip.transition().duration(200).style("opacity", 1);
+            
+                // Set tooltip content and position it near the mouse pointer
+                tooltip
+                    .html(`<strong>${d["Household Type"] || d["Age Group"]}</strong><br>Median Income: $${d["Median Income(dollars)"]}`)
+                    .style("left", `${event.pageX + 10}px`) // Position 10px to the right of the mouse
+                    .style("top", `${event.pageY - 20}px`); // Position 20px above the mouse
             })
             .on("mouseout", () => {
-                d3.select(".tooltip").transition().duration(200).style("opacity", 0);
+                // Hide the tooltip
+                tooltip.transition().duration(200).style("opacity", 0);
             });
 
         svg.append("text")
@@ -366,7 +395,6 @@ d3.csv("age_income.csv").then(data => {
 
     updateAgeCharts();
 });
-
 
 // Section 5: Employment Map Visualization
 mapboxgl.accessToken = 'pk.eyJ1IjoicHJhdmVlbm1hbmltYXJhbiIsImEiOiJjbTN1dGNhaDkwbnAwMmlvOXZpdWtwYno2In0.nW1IXuXViZmZKD9EZh1HRA'; // Replace with your Mapbox token
@@ -497,6 +525,7 @@ const employmentMap = new mapboxgl.Map({
     zoom: 3
 });
 
+
 // Load GeoJSON and employment data
 Promise.all([
     fetch('us-states.json').then(res => res.json()), // GeoJSON file
@@ -609,8 +638,6 @@ Promise.all([
 
 
 // Section 8: GDP Visualization with Animation
-
-// Section 8: GDP Visualization with Animation
 const margin4 = { top: 50, right: 100, bottom: 50, left: 100 };
 const width4 = 1200 - margin4.left - margin4.right;
 const height4 = 600 - margin4.top - margin4.bottom;
@@ -623,8 +650,17 @@ const svgGDP = d3.select("#gdp-chart")
     .append("g")
     .attr("transform", `translate(${margin4.left},${margin4.top})`);
 
+// Add chart title
+svgGDP.append("text")
+    .attr("x", width4 / 2)
+    .attr("y", -margin4.top / 2)
+    .attr("text-anchor", "middle")
+    .style("font-size", "16px")
+    .style("font-weight", "bold")
+    .text("GSP from 2000-2023");
+
 // Load and process the GDP data
-d3.csv("gdp.csv").then(data => {
+d3.csv("state_year_gsp.csv").then(data => {
     data.forEach(d => {
         d.Year = +d.Year;
         d.GSP = +d.GSP;
@@ -634,11 +670,10 @@ d3.csv("gdp.csv").then(data => {
     const states = Array.from(new Set(data.map(d => d.State)));
     const nestedData = d3.group(data, d => d.State);
 
-    // Set up scales
     // Set scales
     const x = d3.scaleLinear()
-        .domain([2006, 2022]) // Adjust to your data range
-        .range([0, width]);
+        .domain([2000, 2023]) // Adjust to your data range
+        .range([0, width4]);
 
     const y = d3.scaleLinear()
         .domain([0, d3.max(data, d => d.GSP)])
@@ -647,9 +682,25 @@ d3.csv("gdp.csv").then(data => {
     // Add axes
     svgGDP.append("g")
         .attr("transform", `translate(0,${height4})`)
-        .call(d3.axisBottom(x).tickFormat(d3.format("d")));
+        .call(d3.axisBottom(x).tickFormat(d3.format("d")))
+        .append("text")
+        .attr("x", width4 / 2)
+        .attr("y", 40)
+        .attr("fill", "black")
+        .style("font-size", "12px")
+        .style("font-weight", "bold")
+        .text("Year");
 
-    svgGDP.append("g").call(d3.axisLeft(y));
+    svgGDP.append("g")
+        .call(d3.axisLeft(y))
+        .append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("x", -height4 / 2)
+        .attr("y", -50)
+        .attr("fill", "black")
+        .style("font-size", "12px")
+        .style("font-weight", "bold")
+        .text("Dollars");
 
     // Add state lines
     const line = d3.line()
@@ -700,6 +751,3 @@ d3.csv("gdp.csv").then(data => {
         }, 500); // Animation speed
     };
 });
-
-
-
