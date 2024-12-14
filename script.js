@@ -677,7 +677,7 @@ Promise.all([
 
 // Section 8: GDP Visualization with Animation
 const margin4 = { top: 50, right: 100, bottom: 50, left: 100 };
-const width4 = 1200 - margin4.left - margin4.right;
+const width4 = 1000 - margin4.left - margin4.right;
 const height4 = 600 - margin4.top - margin4.bottom;
 
 // Create SVG container
@@ -788,4 +788,151 @@ d3.csv("state_year_gsp.csv").then(data => {
             year++;
         }, 500); // Animation speed
     };
+});
+
+//Bubble Plot
+// Adjusted margins for better layout
+const marginBubble = { top: 20, right: 20, bottom: 100, left: 150 };
+const widthBubble = 950 - marginBubble.left - marginBubble.right;
+const heightBubble = 600 - marginBubble.top - marginBubble.bottom;
+
+// Create SVG container
+const svgBubble = d3.select("#bubble-plot")
+    .append("svg")
+    .attr("width", widthBubble + marginBubble.left + marginBubble.right)
+    .attr("height", heightBubble + marginBubble.top + marginBubble.bottom)
+    .append("g")
+    .attr("transform", `translate(${marginBubble.left},${marginBubble.top})`);
+
+// Tooltip for hover
+const tooltipBubble = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+
+// Scales
+const xScaleBubble = d3.scaleLinear().range([0, widthBubble]);
+const yScaleBubble = d3.scaleLinear().range([heightBubble, 0]);
+const sizeScaleBubble = d3.scaleSqrt().range([5, 40]); // Reduced bubble size
+const colorScaleBubble = d3.scaleOrdinal(d3.schemeTableau10);
+
+// Axes
+svgBubble.append("g")
+    .attr("class", "x-axis")
+    .attr("transform", `translate(0,${heightBubble})`);
+
+svgBubble.append("g")
+    .attr("class", "y-axis");
+
+// Axis labels
+svgBubble.append("text")
+    .attr("class", "x-axis-label")
+    .attr("text-anchor", "middle")
+    .attr("x", widthBubble / 2)
+    .attr("y", heightBubble + 70)
+    .text("Country");
+
+svgBubble.append("text")
+    .attr("class", "y-axis-label")
+    .attr("text-anchor", "middle")
+    .attr("transform", `translate(-100,${heightBubble / 2}) rotate(-90)`)
+    .text("GDP (Trillions)");
+
+// Load data
+d3.csv("world_gdp.csv").then(data => {
+    data.forEach(d => {
+        d.Year = +d.Year;
+        d.GDP = +d.GDP / 1e12; // Convert GDP to trillions
+    });
+
+    const years = [...new Set(data.map(d => d.Year))];
+
+    // Initial year
+    let currentYear = years[0];
+
+    // Draw plot
+    const updateBubblePlot = year => {
+        const filteredData = data.filter(d => d.Year === year);
+        const countries = filteredData.map(d => d.Country);
+
+        // Update scales
+        xScaleBubble.domain([-1, countries.length - 1]);
+        yScaleBubble.domain([0, d3.max(filteredData, d => d.GDP) * 1.1]); // Add padding
+        sizeScaleBubble.domain([0, d3.max(filteredData, d => d.GDP)]);
+        colorScaleBubble.domain(countries);
+
+        // Update axes
+        svgBubble.select(".x-axis")
+            .call(d3.axisBottom(xScaleBubble)
+                .ticks(countries.length)
+                .tickFormat(() => "")) // Hide the labels by returning an empty string
+            .selectAll("text")
+            .attr("transform", "rotate(-45)")
+            .style("text-anchor", "end");
+
+        svgBubble.select(".y-axis")
+            .call(d3.axisLeft(yScaleBubble).ticks(8).tickFormat(d3.format(".2f")));
+
+        // Update bubbles
+        const bubbles = svgBubble.selectAll(".bubble")
+            .data(filteredData, d => d.Country);
+
+        bubbles.enter()
+            .append("circle")
+            .attr("class", "bubble")
+            .attr("cx", (_, i) => xScaleBubble(i))
+            .attr("cy", d => yScaleBubble(d.GDP))
+            .attr("r", d => sizeScaleBubble(d.GDP))
+            .attr("fill", d => colorScaleBubble(d.Country))
+            .on("mouseover", (event, d) => {
+                tooltipBubble.transition().duration(200).style("opacity", 1);
+                tooltipBubble.html(`${d.Country}<br>GDP: $${d.GDP.toFixed(2)}T`)
+                    .style("left", `${event.pageX + 10}px`)
+                    .style("top", `${event.pageY - 20}px`);
+            })
+            .on("mouseout", () => {
+                tooltipBubble.transition().duration(200).style("opacity", 0);
+            })
+            .merge(bubbles)
+            .transition()
+            .duration(500)
+            .attr("cx", (_, i) => xScaleBubble(i))
+            .attr("cy", d => yScaleBubble(d.GDP))
+            .attr("r", d => sizeScaleBubble(d.GDP))
+            .attr("fill", d => colorScaleBubble(d.Country));
+
+        bubbles.exit().remove();
+
+        // Update labels
+        const labels = svgBubble.selectAll(".label")
+            .data(filteredData, d => d.Country);
+
+        labels.enter()
+            .append("text")
+            .attr("class", "label")
+            .attr("x", (_, i) => xScaleBubble(i))
+            .attr("y", d => yScaleBubble(d.GDP) - sizeScaleBubble(d.GDP) - 5)
+            .attr("text-anchor", "middle")
+            .attr("font-size", "10px")
+            .text(d => d.Country)
+            .merge(labels)
+            .transition()
+            .duration(500)
+            .attr("x", (_, i) => xScaleBubble(i))
+            .attr("y", d => yScaleBubble(d.GDP) - sizeScaleBubble(d.GDP) - 5)
+            .text(d => d.Country);
+
+        labels.exit().remove();
+
+        // Update year label
+        d3.select("#year-label").text(year);
+    };
+
+    // Initial plot
+    updateBubblePlot(currentYear);
+
+    // Add slider functionality
+    d3.select("#year-slider").on("input", function () {
+        currentYear = +this.value;
+        updateBubblePlot(currentYear);
+    });
 });

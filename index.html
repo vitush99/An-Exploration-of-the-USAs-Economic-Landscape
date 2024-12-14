@@ -101,6 +101,25 @@
             display: block; /* Ensure the active tab is visible */
         }
 
+        #bubble-plot {
+            width: 1000px;
+            height: 600px;
+            margin: auto;
+            border: 1px solid #ddd;
+        }
+        #year-slider {
+            width: 300px;
+        }
+        .tooltip {
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 5px;
+            border-radius: 5px;
+            pointer-events: none;
+            font-size: 12px;
+        }
+
     </style>
 </head>
 <body>
@@ -126,7 +145,7 @@
             <p>
                 Did you know that if California were a country, its economy would rank as the 5th largest in the world, surpassing nations like the United Kingdom and India? 
                 This remarkable fact highlights the vast economic diversity within the United States, where each state contributes uniquely to the nation’s overall economic landscape. 
-                This project aims to demystify complex economic indicators—such as household income, employment rates, and GDP per capita—through engaging visualizations and interactive tools. 
+                This project aims to demystify complex economic indicators such as household income, employment rates, and GDP per capita through engaging visualizations and interactive tools. 
                 By combining data with dynamic visualizations, this project offers an intuitive way to explore how these indicators vary across states and over time. Whether you're curious about 
                 income disparities, unemployment trends, or the economic growth of individual states, this explorable explanation will guide you through the data in a way that's both accessible 
                 and insightful. Make sure to check out our demo video below to get a better idea of how to use our visualizations.
@@ -229,7 +248,7 @@
             </p>
             </p>
                 Use the visualization below to compare head to head houshold incomes and compare between the years 2022 and 2023. 
-                **Make sure to uncheck plot all categories if you want to compare head to head!
+                **Make sure to uncheck "Plot All Categories" if you want to compare head to head!
 
             </p>
             <div class="controls">
@@ -275,16 +294,14 @@
             <p>
                 Household median income is very different, depending on the household type and reflects a larger socio-economic dynamic within the United States. 
                 In general, a family household with a married couple at its head consistently shows the highest median income levels. Much of this likely comes from 
-                a dual-income advantage. By contrast, single-income households (especially those maintained by a single female or male householder with no 
-                spouse-present) notably lower medians. Such a wide gap in income between family and non-family households indicates the economic struggle of 
+                a dual-income advantage. By contrast, single-income households, especially those maintained by a single female or male householder with no 
+                spouse present, notably lower medians. Such a wide gap in income between family and non-family households indicates the economic struggle of 
                 single-parent families due to various systemic factors, including the pay gap between genders and the limited availability of affordable childcare.
-            </p>
             </p>
                 Non-family households, including those maintained by a single individual, also have significantly lower median incomes compared to 
                 family households. These figures point toward the economic vulnerability of individuals living alone or without familial supporting structures. 
-                Furthermore, when viewed across years 2022 and 2023 any observed change in median income across these categories could reflect broader economic 
-                trends such as inflation, wage growth, or post-pandemic recovery. For example, even the minor increase in incomes for most types may point to 
-                an incremental economic increase, although the continuing dispersion among household types indicates persisting structural inequity.
+                Furthermore, when viewed across years 2022 and 2023, any observed change in median income across these categories could reflect broader economic 
+                trends such as inflation, wage growth, or post-pandemic recovery.
             </p>
             </p>
                 In all, this visualization shows that understanding household composition is crucial for analyzing income inequality. As such, targeted policy 
@@ -301,11 +318,11 @@
             Income levels are closely tied to an individual’s age, reflecting the progression of careers, educational attainment, and retirement. Understanding 
             these trends reveals not only the earning potential across different stages of life but also the economic challenges and opportunities faced by 
             specific age groups. This section provides an interactive visualization that explores median income across age categories, offering insights into 
-            how income evolves from early adulthood to retirement. By comparing age groups and tracking changes over time, we can better understand the economic realities of different generations and the broader implications for financial security and inequality.
+            how income evolves from early adulthood to retirement.
         </p>
         </p>
             Just like before, you can compare between years and now compare between age groups head to head. 
-            **Make sure to uncheck plot all categories if you want to compare age categories head to head!
+            **Make sure to uncheck "Plot All Categories" if you want to compare age categories head to head!
         </p>
         <div class="controls">
             <div>
@@ -364,8 +381,8 @@
         </p>
             The income plateau and subsequent decline beyond age 55 give rise to important considerations of economic security in older age. This 
             finding underlines the importance of ample retirement savings and social support to ensure economic security in later life. It also may 
-            be informative to compare the 2022 and 2023 age-income distributions for evidence of how economic conditions-including inflation and/or 
-            labor market changes-affect different age groups over time.
+            be informative to compare the 2022 and 2023 age-income distributions for evidence of how economic conditions (inflation and/or 
+            labor market changes) affect different age groups over time.
         </p>
     </section>
 
@@ -541,10 +558,77 @@
             <p>
                 The steady rise of larger states California, Texas, and New York shows how broad and extensive industries drive economic output at the state level.
                 The visualization also captures periods of economic fluctuation, including the slowdown of 2008 during the financial crisis when so many states 
-                saw their economies stagnate or dip. The post-crisis recoveries are observed, resuming upward growth trends across different states at different 
-                rates. Some states with a more diversified industrial base generally perform in a much steadier manner, whereas some relying on specific sectors—energy 
-                or manufacturing, for instance—are more volatile.
+                saw their economies stagnate or dip. We can also see a noticeable dip in 2020 as a result of the Covid-19 Pandemic. The post-crisis recoveries are observed, 
+                resuming upward growth trends across different states at different rates. Some states with a more diversified industrial base generally perform in a much 
+                steadier manner, whereas some relying on specific sectors—energy or manufacturing, for instance—are more volatile.
             <p>
+
+            <p>
+                Lastly, let's take a journey through the global economic landscape and see how the United States compares to other countries in terms of GDP. 
+                The visualization below highlights the top 10 countries by GDP from the year 2000 through to the end of 2024. Using the slider, you can move in 
+                five-year increments to see how rankings shift over time.
+            <p>
+
+            <div id="bubble-plot-container">
+                <h2>Bubble Plot: GDP of Countries</h2>
+                <div id="bubble-plot"></div>
+                <input type="range" id="year-slider" min="2000" max="2025" step="5" value="2000">
+                <label for="year-slider">Year: <span id="year-label">2000</span></label>
+            </div>
+
+            <p>
+                As you move the slider through the years, one thing becomes immediately clear: the United States is a titan in the global economy. Its dominance 
+                is represented by the sheer size of its bubble, often towering above others. This reflects its robust industries, from technology and finance to 
+                entertainment and manufacturing, along with its unmatched ability to attract talent and investment worldwide. It’s no wonder the U.S. has consistently 
+                been at the top of the rankings.
+            </p>
+            <p>
+                But it’s not just the U.S. that has a compelling story. Let’s talk about the other countries that persistently stay in the top 10:
+            </p>
+            <ul>
+                <li>
+                    <strong>China:</strong> Its growth is one of the most remarkable stories of modern history. From 2000 onwards, its GDP grows at an extraordinary rate, 
+                    reflecting the country’s rapid industrialization, export-driven economy, and population size. By 2025, it solidifies its place as the second-largest economy.
+                </li>
+                <li>
+                    <strong>Japan:</strong> While its economy is more stable and less volatile, Japan remains in the top 10 thanks to its advanced industries and technological 
+                    innovations. Its GDP growth is slower compared to some, but its resilience speaks volumes.
+                </li>
+                <li>
+                    <strong>Germany:</strong> As the economic powerhouse of Europe, Germany’s bubble is a consistent presence in the rankings. Its expertise in engineering, 
+                    particularly in the automotive sector, keeps it competitive year after year.
+                </li>
+                <li>
+                    <strong>India:</strong> Starting as a smaller player in the early 2000s, India’s GDP grows steadily, driven by its burgeoning tech industry, population, 
+                    and services sector. By 2025, its bubble represents the strides made in one of the world’s fastest-growing economies.
+                </li>
+                <li>
+                    <strong>United Kingdom and France:</strong> These countries maintain strong GDP figures thanks to their established industries, including finance, 
+                    fashion, and tourism. They represent stability in a rapidly changing global economy.
+                </li>
+                <li>
+                    <strong>Brazil:</strong> Brazil’s bubble may shrink and expand slightly, but its presence is due to its rich natural resources, agriculture, and 
+                    growing industrial base.
+                </li>
+                <li>
+                    <strong>Canada:</strong> With a smaller population but vast natural resources, Canada holds its ground as a top economy. Its stable financial 
+                    systems and trade relations with the U.S. help it stay competitive.
+                </li>
+                <li>
+                    <strong>South Korea:</strong> Known for its tech giants like Samsung and LG, South Korea punches above its weight with its innovation-driven 
+                    economy and strong export markets.
+                </li>
+            </ul>
+            <p>
+                Each bubble tells its own story. While the United States remains a steady and dominant force, the rise of countries like China and India showcases the 
+                shift in global economic power towards Asia. The resilience of countries like Japan, Germany, and South Korea highlights the importance of innovation and 
+                adaptability. Meanwhile, resource-rich nations like Brazil and Canada show how natural wealth can fuel consistent growth.
+            </p>
+            <p>
+                This visualization isn’t just about numbers—it’s about understanding how economies evolve, adapt, and compete in an ever-changing global landscape. What trends or surprises stand out to you as you explore the data?
+            </p>
+            
+
         </section>
     </div>
 
@@ -571,8 +655,8 @@
             </p>
             <p>
                 At the end of the day, this project is about showing how understanding economic trends—both nationally and at the state level—can help address systemic issues and build 
-                a more equitable future. The combination of interactive tools and thoughtful analysis makes these important topics accessible and engaging, leaving you with a deeper 
-                appreciation for the complexities of the U.S. economy.
+                a more equitable future. The combination of interactive tools and thoughtful analysis makes these important topics accessible and engaging while hopefully, leaving you with 
+                a deeper appreciation for the complexities of the U.S. economy.
             </p>
         </section>
     </div>
