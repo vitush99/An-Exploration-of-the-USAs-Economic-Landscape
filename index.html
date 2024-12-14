@@ -114,7 +114,7 @@
         <button class="tab-button" onclick="showTab('tab-introduction')">Introduction</button>
         <button class="tab-button" onclick="showTab('tab-metrics')">Economic Metrics Across the United States</button>
         <button class="tab-button" onclick="showTab('tab-comparisons')">Comparisons Between States</button>
-        <button class="tab-button" onclick="showTab('tab-gdp')">Understanding GDP</button>
+        <button class="tab-button" onclick="showTab('tab-gdp')">Exploring GDP and GSP</button>
         <button class="tab-button" onclick="showTab('tab-conclusion')">Conclusion</button>
     </div>
 
@@ -149,7 +149,7 @@
         <section id="state-visualization">
             <h2>Background</h2>
             <p>
-                The economy of the United States is incredible diverse, with each state contributing uniquely to the nation's overall economic health.
+                The economy of the United States is incredibly diverse, with each state contributing uniquely to the nation's overall economic health.
                 From vibrant urban hubs with concentrated wealth to rural regions defined by specific industries, the economic landscape varies dramatically.
                 These differences are driven by factors such as population size, income distribution, labor market engagement, and wealth concentration. 
                 To truly grasp the complexities of the U.S. economy, it’s essential to break some of these metrics down.
@@ -171,7 +171,7 @@
                 <label for="state-select">Select State:</label>
                 <select id="state-select" multiple></select>
             </div>
-            <div id="chart" class="visualization" style="height: 550px; margin-bottom: 10px;"></div>
+            <div id="chart" class="visualization" style="height: 600px; margin-bottom: 20px;"></div>
         
             <!-- Standalone Legend -->
             <div id="state-legend" style="margin-top: 20px; padding: 10px; background-color: white; border: 1px solid #ccc; width: fit-content;">
@@ -246,7 +246,7 @@
                         <option value="Family Household - Married Couple">Family Household - Married Couple</option>
                         <option value="Family Household - Female Householder (no spouse)">Family Household - Female Householder (no spouse)</option>
                         <option value="Family Household - Male Householder (no spouse)">Family Household - Male Householder (no spouse)</option>
-                        <option value="Non-Family Household - Total">Non-Family Household - Female Householder</option>
+                        <option value="Non-Family Household - Total">Non-Family Household - Total</option>
                         <option value="Non-Family Household - Female Householder">Non-Family Household - Female Householder</option>
                         <option value="Non-Family Household - Male Householder">Non-Family Household - Male Householder</option>
                     </select>
@@ -258,7 +258,7 @@
                         <option value="Family Household - Married Couple">Family Household - Married Couple</option>
                         <option value="Family Household - Female Householder (no spouse)">Family Household - Female Householder (no spouse)</option>
                         <option value="Family Household - Male Householder (no spouse)">Family Household - Male Householder (no spouse)</option>
-                        <option value="Non-Family Household - Total">Non-Family Household - Female Householder</option>
+                        <option value="Non-Family Household - Total">Non-Family Household - Total</option>
                         <option value="Non-Family Household - Female Householder">Non-Family Household - Female Householder</option>
                         <option value="Non-Family Household - Male Householder">Non-Family Household - Male Householder</option>
                     </select>
@@ -275,14 +275,14 @@
             <p>
                 Household median income is very different, depending on the household type and reflects a larger socio-economic dynamic within the United States. 
                 In general, a family household with a married couple at its head consistently shows the highest median income levels. Much of this likely comes from 
-                a dual-income advantage. By contrast, single-income households-most especially those maintained by a single female or male householder with no 
-                spouse-present notably lower medians. Such a wide gap in income between family and non-family households indicates the economic struggle of 
+                a dual-income advantage. By contrast, single-income households (especially those maintained by a single female or male householder with no 
+                spouse-present) notably lower medians. Such a wide gap in income between family and non-family households indicates the economic struggle of 
                 single-parent families due to various systemic factors, including the pay gap between genders and the limited availability of affordable childcare.
             </p>
             </p>
-                Non-family households, therefore, including those maintained by a single individual, also have significantly lower median incomes compared to 
+                Non-family households, including those maintained by a single individual, also have significantly lower median incomes compared to 
                 family households. These figures point toward the economic vulnerability of individuals living alone or without familial supporting structures. 
-                Furthermore, when viewed across years-2022 and 2023-any observed change in median income across these categories could reflect broader economic 
+                Furthermore, when viewed across years 2022 and 2023 any observed change in median income across these categories could reflect broader economic 
                 trends such as inflation, wage growth, or post-pandemic recovery. For example, even the minor increase in incomes for most types may point to 
                 an incremental economic increase, although the continuing dispersion among household types indicates persisting structural inequity.
             </p>
@@ -344,10 +344,14 @@
             <div id="age-chart1" class="age-visualization"></div>
             <div id="age-chart2" class="age-visualization"></div>
         </div>
+        </p>
+            
+        </p>
         <p>
-            There is a clear relationship between median income and age, reflecting the life cycle of an individual's career. Income increases through 
+            After playing around with the visual, you may realize that there is a relationship between median income and age. 
+            This relationship allows us to better understand the life cycle of an individual's career. Income increases through 
             early adulthood and peaks during the 35-54 age range before starting to decline. This happens to correspond with what is traditionally 
-            considered the prime working years-the period when workers gain experience, often complete higher education or specialized skill training, 
+            considered the prime working years where workers gain experience, often complete higher education or specialized skill training, 
             and advance in their careers. Skilled professional capital will have built up over time, and the possibility of higher earnings is realized
             more in these middle parts of life.
         </p>
@@ -362,10 +366,6 @@
             finding underlines the importance of ample retirement savings and social support to ensure economic security in later life. It also may 
             be informative to compare the 2022 and 2023 age-income distributions for evidence of how economic conditions-including inflation and/or 
             labor market changes-affect different age groups over time.
-        </p>
-        </p>
-            This figure displays the interactions between age, career trajectory, and financial planning as a frame for considering life-span implications 
-            of economic inequality.
         </p>
     </section>
 
@@ -387,71 +387,73 @@
         <section id="section-5">
             <h2>Unemployment Rates Across the United States</h2>
             <p>
-                The heat map below shows the distribution of unemployment rates across the United States and thus provides a geographic lens into the disparities 
-                in economic fortunes. Darker shades represent states that have higher unemployment rates, while lighter shades show states that have 
-                relatively lower rates. The scale of unemployment rates-from a low of 2.0% to well over 5.3%-indicate great variability in local economic 
-                conditions, labor market dynamics, and policy impacts. Let us take a look at the United States map and explore each state. **Make sure to zoom out to see Alaska and Puerto Rico!
+                Let’s dive into the unemployment rates across the U.S.! The heat map below shows how unemployment varies from state to state, giving us a clear picture of 
+                where people are struggling the most to find jobs. Darker shades mean higher unemployment, while lighter ones show lower rates. It’s interesting to see such 
+                big differences, with rates ranging from as low as 2.0% to over 5.3%. Don’t forget to hover over each state to see how the percentages shift between 2023 
+                and 2024; Zoom out to catch Alaska and Puerto Rico!
             </p>
             <div id="legend" style="margin-top: 20px; padding: 10px; background-color: white; border: 1px solid #ccc; width: 200px;"></div>
             <div id="chart5" class="map-visualization"></div>
             <p>
-
-                We can see that the lowest unemployment rates are in the Midwest and Mountain West states, such as Nebraska and Utah, which often reflect a mix of 
-                diversified economies and lower population densities. In contrast, the highest unemployment rates are found in states of the South and parts of the 
-                West Coast, which may reflect structural challenges such as industry-specific job losses, higher cost of living pressures, or restricted 
-                access to employment opportunities in rural or economically depressed areas.
+                If you look closely, you’ll notice that states like Nebraska and Utah boast the lowest unemployment rates. These states often have diverse economies and 
+                fewer people, which can make it easier to keep unemployment low. On the flip side, states in the South and parts of the West Coast tend to have higher 
+                unemployment. This might be because of challenges like job losses in specific industries, higher living costs, or fewer job opportunities in rural or 
+                struggling areas.
+            </p>
             <p>
+                One thing that stands out is how much regional policies and industries impact employment. For example, states relying heavily on tourism or oil production 
+                can face big swings when demand drops or unexpected events happen. Meanwhile, neighboring states might have totally different unemployment rates, which 
+                often comes down to differences in local leadership, education systems, or infrastructure investments.
+            </p>
             <p>
-                This also brings out the contribution of regional policies and industries to employment. For example, states that depend on tourism or 
-                oil production face fluctuations in demand and exogenous shocks. Further, variations among neighboring states also indicate that 
-                local governance, educational systems, and infrastructure investments influence the characteristics of the labor market.
-            <p>
-            <p>
-                Further investigation into either trends over time or more detailed demographic and industry-specific unemployment data could help 
-                explain these patterns. As such, this map calls for action in the form of targeted economic interventions and workforce development 
-                programs to address regional disparities and create more equitable opportunities across the nation.
+                This map is a call to action: smarter economic policies and workforce programs are needed to create equal job opportunities and 
+                tackle the disparities we see across the country.
             </p>
         </section>
 
         <section id="section-6">
             <h2>Employed Numbers Across the United States</h2>
             <p>
-                Now let's compare with the total employment numberd across the United States! 
+                Let’s take a closer look at employment numbers across the United States! This viusalization shows the raw numbers of total employment across the country in 2024. 
+                You can hover over each state to see the net change and percentage change in employment over the past 12 months. Don't forget to zoom out to catch Alaska!
             </p>
             <div id="legend-employment" style="margin-top: 20px; padding: 10px; background-color: white; border: 1px solid #ccc; width: 200px;"></div>
-                
             <div id="employment-map" class="map-visualization"></div>
             <p>
-                This visualization presents the absolute numbers of employment throughout the United States, in a way giving an overview of workforce 
-                distribution by state. States with larger populations, like California, Texas, and New York, naturally show higher employment numbers, 
-                reflecting their large contribution to the national economy. Less populous states, like those in the Midwest and Mountain West regions, 
-                show lower absolute employment figures, consistent with their smaller labor forces.
+                This visualization gives us a bird’s-eye view of where people are working and how the workforce is distributed by state. Unsurprisingly, states 
+                with larger populations like California, Texas, and New York dominate the numbers—they’re the heavyweights of the national economy. 
+                Meanwhile, smaller states in the Midwest and Mountain West have fewer people overall, which naturally means smaller workforces. 
             </p>
+            <p>
+                What’s really fascinating is how urban and industrial centers play such a big role in shaping these numbers. Places like Chicago in Illinois 
+                or Miami in Florida tend to cluster at the higher end of the employment spectrum, thanks to the economic power of urbanization. But it’s 
+                important to remember: these figures show the number of jobs, not necessarily the quality of those jobs. Things like wage levels and job 
+                stability can vary a lot, even within the same state.
             </p>
-                The geographic distribution of the numbers of employment also underlines the economic weight of the urban and industrial centers. Large
-                 metropolitan states, such as Illinois with Chicago and Florida with Miami, tend to cluster in the higher ranges of employment, underlining 
-                 the role of urbanization in creating jobs. These figures do not reflect employment quality, such as wage levels or job stability, which 
-                 may vary widely within and across states.
+            <p>
+                Now, let’s compare this with the unemployment map. You might spot some interesting patterns. For instance, even though California has a massive 
+                workforce, it can still struggle with high unemployment. This could mean there are mismatches between the jobs available and the people looking 
+                for work, or maybe not everyone has equal access to those jobs. On the flip side, states like Nebraska or South Dakota might have fewer jobs overall,
+                 but their labor markets are tight, meaning most people who want to work are already employed.
             </p>
+            <p>
+                This visualization really shows the complexity of labor dynamics in the U.S. Employment volume doesn’t always equal economic health—it’s more nuanced 
+                than that. By looking at these maps together, we can see where targeted policies could make the biggest impact, whether it’s creating new opportunities 
+                in struggling areas or addressing mismatches in places with high unemployment. It’s a story of challenges and opportunities, all told through the data.
             </p>
-                When juxtaposed against the unemployment rate map, some interesting patterns emerge. Highly employed states, such as California, may still 
-                have a high unemployment rate, which would indicate labor supply and demand mismatches or regional job accessibility issues. On the other 
-                hand, states with low unemployment rates and lower employment numbers, such as Nebraska or South Dakota, reflect tight labor markets in 
-                smaller economies. These relationships underline the complexity in labor dynamics, where employment volume does not always guarantee low 
-                unemployment.
-            </p>
-            </p>
-                Together, these visualizations paint a detailed picture of the U.S. labor market, showing both its absolute workforce strength and 
-                unemployment challenges. They underscore the tailored economic strategies needed to address regional disparities, support job creation, 
-                and ensure equal access to available opportunities across the country.
-            </p>
-
         </section>
+        
     </div>
 
     <div id="tab-gdp" class="tab-content">
         <section id="section-7">
-            <h3>Gross Domestic Product (GDP):</h3>
+            <h2>Gross Domestic Product (GDP) and Gross State Product (GSP)</h2>
+            <p>
+                The economy is a massive and complex system, but two key indicators help us understand its performance: GDP (Gross Domestic Product) at the national level and 
+                GSP (Gross State Product) at the state level. Together, they offer a way to measure economic activity, compare growth, and identify disparities both within and 
+                across states. This section breaks down these concepts, highlights their differences, and explains their significance in painting a picture of the U.S. economy.
+            </p>
+            <h3>Gross Domestic Product (GDP)</h3>
             <ul>
                 <li><strong>Definition:</strong> GDP measures the total monetary value of all final goods and services produced within a country’s borders in a specific time period, usually annually or quarterly.</li>
                 <li><strong>Scope:</strong> National level (e.g., the entire United States).</li>
@@ -471,7 +473,7 @@
                 </li>
                 <li><strong>Example:</strong> The GDP of the United States in 2024 is approximately $28.78 trillion.</li>
             </ul>
-            <h3>Gross State Product (GSP):</h3>
+            <h3>Gross State Product (GSP)</h3>
             <ul>
                 <li><strong>Definition:</strong> GSP measures the total monetary value of all goods and services produced within a specific state in a 
                     given period. It is the state-level equivalent of GDP, measuring economic performance at a sub-national level.</li>
@@ -485,7 +487,7 @@
                 <li><strong>Components:</strong> Same as GDP, but limited to a single state’s economy.</li>
                 <li><strong>Example:</strong> Texas’s GSP in 2023 is approximately $2.6 trillion.</li>
             </ul>
-            <h3>Key Differences Between GDP and GSP:</h3>
+            <h3>Key Differences Between GDP and GSP</h3>
             <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
                 <thead>
                     <tr style="background-color: #f2f2f2;">
@@ -550,22 +552,31 @@
         <section id="section-9">
             <h2>Conclusion</h2>
             <p>
-                The key takeaway from this project is the profound diversity of the U.S. economic landscape and the critical need to examine multiple economic indicators to grasp its complexities. The visualizations demonstrate that while states like California, Texas, and New York drive national economic growth with their massive contributions to GDP, they also highlight stark disparities in income distribution, employment rates, and regional economic dynamics.
+                If there’s one big takeaway from this project, it’s just how diverse and complex the U.S. economic landscape really is. By looking at different states and 
+                their contributions to GDP, we see not only massive growth from powerhouses like California, Texas, and New York but also stark contrasts in income distribution, 
+                employment rates, and regional dynamics. It’s a story of both opportunities and challenges that define the nation’s economy.
             </p>
             <p>
-                This project succeeds in explaining these insights because of its:
+                This project stands out because:
                 <ul>
-                    <li><strong>Interactivity:</strong> Users can explore economic data tailored to their interests, from comparing income distributions to visualizing state-specific GSP over time.</li>
-                    <li><strong>Clarity:</strong> The thoughtfully designed visualizations ensure accessibility, enabling even non-experts to grasp complex economic concepts effortlessly.</li>
-                    <li><strong>Contextual Narratives:</strong> Accompanying explanations connect data trends to real-world implications, fostering a deeper understanding of economic inequality and resilience.</li>
-                    <li><strong>Holistic Approach:</strong> By integrating diverse metrics—household income, age-based earnings, employment rates, and GDP—the project paints a comprehensive picture of the U.S. economy.</li>
+                    <li><strong>It’s interactive:</strong> You get to dive into the data yourself, exploring things like income trends and GSP changes over time, making the insights 
+                        feel personal and meaningful.</li>
+                    <li><strong>It’s clear:</strong> The visualizations are designed to be simple and intuitive, so even if you’re not a data expert, you can quickly understand the 
+                        key takeaways.</li>
+                    <li><strong>It tells a story:</strong> Each section ties the data to real-world impacts, helping you connect the numbers to the lived experiences of people across 
+                        the country.</li>
+                    <li><strong>It’s comprehensive:</strong> By bringing together household income, employment rates, age-based earnings, and GDP, the project gives a full picture of 
+                        how different pieces of the economy fit together.</li>
                 </ul>
             </p>
             <p>
-                Ultimately, this project demonstrates that understanding economic trends at both national and state levels is crucial for addressing systemic disparities and crafting policies that promote equitable growth. The combination of engaging visualizations and insightful analysis ensures that these critical issues are communicated effectively, leaving a lasting impression on viewers.
+                At the end of the day, this project is about showing how understanding economic trends—both nationally and at the state level—can help address systemic issues and build 
+                a more equitable future. The combination of interactive tools and thoughtful analysis makes these important topics accessible and engaging, leaving you with a deeper 
+                appreciation for the complexities of the U.S. economy.
             </p>
         </section>
     </div>
+    
 
     <script>
         function showTab(tabId) {
