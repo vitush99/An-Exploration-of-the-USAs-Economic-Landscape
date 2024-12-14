@@ -649,8 +649,8 @@ Promise.all([
 
         // Add a legend
         const legend = document.getElementById('legend-employment');
-        const colors = ['#e0f7e4', '#a8e6a1', '#70d461', '#40b22e', '#148f00'];
-        const labels = ['0 - 2M', '2M - 5M', '5M - 10M', '10M - 20M', '20M and above'];
+        const colors = ['#e0f7e4', '#a8e6a1', '#70d461', '#40b22e'];
+        const labels = ['0 - 2M', '2M - 5M', '5M - 10M', '10M - 20M'];
 
         labels.forEach((label, i) => {
             const legendItem = document.createElement('div');

@@ -56,7 +56,7 @@
         .household-visualization,
         .age-visualization {
             width: 45%;
-            height: 500px;
+            height: 300px;
             margin: 10px;
         }
 
@@ -165,7 +165,7 @@
     </div>
 
     <div id="tab-metrics" class="tab-content">
-        <section id="state-visualization">
+        <section id="section-2">
             <h2>Background</h2>
             <p>
                 The economy of the United States is incredibly diverse, with each state contributing uniquely to the nation's overall economic health.
@@ -173,72 +173,6 @@
                 These differences are driven by factors such as population size, income distribution, labor market engagement, and wealth concentration. 
                 To truly grasp the complexities of the U.S. economy, it’s essential to break some of these metrics down.
             </p>
-
-            <h2>State-Level Data Visualization</h2>
-            <p>
-                The state-level data visualization below provides an interactive exploration of key economic metrics across the United States, offering us 
-                a comprehensive view of state-level economic characteristics. You can use the dropdown menus to explore different 
-                metrics (see legend below) and how they vary over time. Click on a state to get started or Ctrl+Click to compare multiple states!
-            </p>
-            <div>
-                <label for="variable-select">Select Metric:</label>
-                <select id="variable-select"></select>
-        
-                <label for="percentile-select">Select Percentile:</label>
-                <select id="percentile-select"></select>
-        
-                <label for="state-select">Select State:</label>
-                <select id="state-select" multiple></select>
-            </div>
-            <div id="chart" class="visualization" style="height: 600px; margin-bottom: 20px;"></div>
-        
-            <!-- Standalone Legend -->
-            <div id="state-legend" style="margin-top: 20px; padding: 10px; background-color: white; border: 1px solid #ccc; width: fit-content;">
-                <h4>Legend: Metric Descriptions</h4>
-                <ul id="state-legend-list" style="list-style: none; padding: 0;">
-                    <li>
-                        <strong>npopult992:</strong> Total Population
-                    </li>
-                    <li>
-                        <strong>afiinct992:</strong> Average income between two percentiles
-                    </li>
-                    <li>
-                        <strong>mfiinct992:</strong> Total value of all wealth in a state
-                    </li>
-                    <li>
-                        <strong>ntaxret992:</strong> Total tax reports filed containing income information
-                    </li>
-                    <li>
-                        <strong>sfiinct992:</strong> Proportion of households with single family income
-                    </li>
-                    <li>
-                        <strong>sptinct992:</strong> Proportion of state-wide income contributed by percentile group
-                    </li>
-                </ul>
-            </div>
-            <p>
-                Each metric in the dropdown menu represents a unique aspect of economic activity. For instance, Total Population (npopult992) highlights 
-                the size of a state’s population, serving as a baseline for understanding economic scale. Average Income Between Two Percentiles (afiinct992) 
-                delves into income distribution, showcasing disparities within the population, while Total Value of All Wealth in a State (mfiinct992) reflects 
-                the economic resources within a state, emphasizing regions with concentrated wealth.
-            </p>
-            </p>
-                Other metrics further illuminate economic activity. Total Tax Reports Filed (ntaxret992) captures the formal economy's activity and serves as 
-                a proxy for labor market engagement. Meanwhile, Proportion of Households With Single-Family Income (sfiinct992) underscores the structure and 
-                income contributions of family households, and Proportion of State-Wide Income Contributed by Percentile Group (sptinct992) reveals income 
-                inequality by highlighting how much income specific groups contribute.
-            </p>
-            </p>
-                This visualization allows users to toggle between these metrics, enabling them to explore state-specific trends and better understand the 
-                diversity in economic landscapes across U.S. states. From population density and family income structures to income inequality and tax 
-                engagement, the visualization ties demographic trends to economic activity. It lays the groundwork for deeper analyses of regional disparities 
-                and provides a foundation for targeted policy discussions. The interactive nature ensures users can engage with the data in a meaningful way, 
-                drawing insights tailored to their specific interests.
-            </p>
-
-        </section>
-
-        <section id="section-2">
             <h2>Explore Household Income</h2>
             <p>
                 Household income is a critical indicator of economic well-being, reflecting both individual earning potential and the broader socio-economic factors 
@@ -290,24 +224,64 @@
                 <div id="chart1" class="household-visualization"></div>
                 <div id="chart2" class="household-visualization"></div>
             </div>
-            <p>
-                Household median income is very different, depending on the household type and reflects a larger socio-economic dynamic within the United States. 
-                In general, a family household with a married couple at its head consistently shows the highest median income levels. Much of this likely comes from 
-                a dual-income advantage. By contrast, single-income households, especially those maintained by a single female or male householder with no 
-                spouse present, notably lower medians. Such a wide gap in income between family and non-family households indicates the economic struggle of 
-                single-parent families due to various systemic factors, including the pay gap between genders and the limited availability of affordable childcare.
-            </p>
-                Non-family households, including those maintained by a single individual, also have significantly lower median incomes compared to 
-                family households. These figures point toward the economic vulnerability of individuals living alone or without familial supporting structures. 
-                Furthermore, when viewed across years 2022 and 2023, any observed change in median income across these categories could reflect broader economic 
-                trends such as inflation, wage growth, or post-pandemic recovery.
-            </p>
-            </p>
-                In all, this visualization shows that understanding household composition is crucial for analyzing income inequality. As such, targeted policy 
-                interventions are warranted to support single-parent families and reduce wage disparities in order to decrease economic inequities and promote 
-                financial resiliency among all household types.
+            <p> Legend for Plot All Categories: </p>
+            <div id="house-legend" style="text-align: center;">
+                <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;">
+                    <div style="display: flex; align-items: center;">
+                        <div style="width: 20px; height: 20px; background-color: rgb(27, 133, 199); margin-right: 5px;"></div>
+                        <span>Family Household - Total</span>
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        <div style="width: 20px; height: 20px; background-color: rgba(220, 113, 20, 0.812); margin-right: 5px;"></div>
+                        <span>Family Household - Married Couple</span>
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        <div style="width: 20px; height: 20px; background-color: rgb(6, 152, 6); margin-right: 5px;"></div>
+                        <span>Family Household - Female Householder (no spouse)</span>
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        <div style="width: 20px; height: 20px; background-color: rgb(226, 4, 4); margin-right: 5px;"></div>
+                        <span>Family Household - Male Householder (no spouse)</span>
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        <div style="width: 20px; height: 20px; background-color: rgb(152, 79, 152); margin-right: 5px;"></div>
+                        <span>Non-Family Household - Total</span>
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        <div style="width: 20px; height: 20px; background-color: rgb(133, 73, 73); margin-right: 5px;"></div>
+                        <span>Non-Family Household - Female Householder</span>
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        <div style="width: 20px; height: 20px; background-color: rgb(224, 114, 174); margin-right: 5px;"></div>
+                        <span>Non-Family Household - Male Householder</span>
+                    </div>
+                </div>
+            </div>
 
-            </p>
+
+            <section id="section-2-explanation">
+                </p>
+                    <a href="https://www.census.gov/data/tables/time-series/demo/income-poverty/historical-income-households.html">Source: United States Census Bureau</a>
+                </p>
+                <p>
+
+                    Household median income is very different, depending on the household type and reflects a larger socio-economic dynamic within the United States. 
+                    In general, a family household with a married couple at its head consistently shows the highest median income levels. Much of this likely comes from 
+                    a dual-income advantage. By contrast, single-income households, especially those maintained by a single female or male householder with no 
+                    spouse present, notably lower medians. Such a wide gap in income between family and non-family households indicates the economic struggle of 
+                    single-parent families due to various systemic factors, including the pay gap between genders and the limited availability of affordable childcare.
+                </p>
+                    Non-family households, including those maintained by a single individual, also have significantly lower median incomes compared to 
+                    family households. These figures point toward the economic vulnerability of individuals living alone or without familial supporting structures. 
+                    Furthermore, when viewed across years 2022 and 2023, any observed change in median income across these categories could reflect broader economic 
+                    trends such as inflation, wage growth, or post-pandemic recovery.
+                </p>
+                </p>
+                    In all, this visualization shows that understanding household composition is crucial for analyzing income inequality. As such, targeted policy 
+                    interventions are warranted to support single-parent families and reduce wage disparities in order to decrease economic inequities and promote 
+                    financial resiliency among all household types.
+                </p>
+            </section>
 
         </section>
         <!-- Section 3 -->
@@ -361,7 +335,7 @@
             <div id="age-chart2" class="age-visualization"></div>
         </div>
         </p>
-            
+            <a href="https://www.census.gov/data/tables/time-series/demo/income-poverty/historical-income-households.html">Source: United States Census Bureau</a>
         </p>
         <p>
             After playing around with the visual, you may realize that there is a relationship between median income and age. 
@@ -383,13 +357,14 @@
             be informative to compare the 2022 and 2023 age-income distributions for evidence of how economic conditions (inflation and/or 
             labor market changes) affect different age groups over time.
         </p>
+
     </section>
 
 
     </div>
 
     <div id="tab-comparisons" class="tab-content">
-        <section id="section-4">
+        <section id="section-5">
             <h2>Comparing States</h2>
             <p>
                 The economic story of the United States is shaped by the unique contributions of its individual states. Each state plays a distinct role in the nation’s overall economy. Understanding these contributions requires 
@@ -398,9 +373,7 @@
                 maps, you’ll gain insights into how different states contribute to the labor market and how regional disparities influence economic 
                 opportunities.
             </p>
-        </section>
 
-        <section id="section-5">
             <h2>Unemployment Rates Across the United States</h2>
             <p>
                 Let’s dive into the unemployment rates across the U.S.! The heat map below shows how unemployment varies from state to state, giving us a clear picture of 
@@ -410,8 +383,18 @@
             </p>
             <div id="legend" style="margin-top: 20px; padding: 10px; background-color: white; border: 1px solid #ccc; width: 200px;"></div>
             <div id="chart5" class="map-visualization"></div>
+            </p>
+                <a href="https://www.bls.gov/web/laus/laumstrk.htm">Source: U.S. Bureau of Labor Statistics </a>
+            </p>
             <p>
-                If you look closely, you’ll notice that states like Nebraska and Utah boast the lowest unemployment rates. These states often have diverse economies and 
+                When you hover over each state, you might notice something interesting: unemployment rates have been climbing since 2023. So, what’s going on here? Well, 
+                part of it is that more people are returning to the workforce after taking a break since 2021(post Covid-19), which naturally increases the labor supply. 
+                But there’s another big factor at play: the rise of AI. AI has been advancing so quickly in recent years and has excelled in automating repetitive, 
+                predictable tasks. Jobs that used to require humans are now being done more efficiently by machines, which means fewer people are needed for the same 
+                amount of work. And in some cases, AI is making certain jobs completely obsolete.
+            </p>
+            <p>
+                You may have also noticed that states like Nebraska and Utah boast the lowest unemployment rates. These states often have diverse economies and 
                 fewer people, which can make it easier to keep unemployment low. On the flip side, states in the South and parts of the West Coast tend to have higher 
                 unemployment. This might be because of challenges like job losses in specific industries, higher living costs, or fewer job opportunities in rural or 
                 struggling areas.
@@ -435,6 +418,9 @@
             </p>
             <div id="legend-employment" style="margin-top: 20px; padding: 10px; background-color: white; border: 1px solid #ccc; width: 200px;"></div>
             <div id="employment-map" class="map-visualization"></div>
+            </p>
+                <a href="https://www.bls.gov/charts/state-employment-and-unemployment/employment-by-state-bar.htm">Source: U.S. Bureau of Labor Statistics </a>
+            </p>
             <p>
                 This visualization gives us a bird’s-eye view of where people are working and how the workforce is distributed by state. Unsurprisingly, states 
                 with larger populations like California, Texas, and New York dominate the numbers—they’re the heavyweights of the national economy. 
@@ -458,6 +444,7 @@
                 in struggling areas or addressing mismatches in places with high unemployment. It’s a story of challenges and opportunities, all told through the data.
             </p>
         </section>
+
         
     </div>
 
@@ -549,6 +536,10 @@
             <div id="gdp-chart" class="visualization" style="height: 600px; margin-bottom: 20px;"></div>
             <button id="play-button" style="display: block; margin: 10px auto;">Play</button>
             
+            </p>
+                <a href="https://www.bea.gov/data/gdp/gdp-state">Source: United States Bureau of Economic Analysis</a>
+            </p>
+
             <p>
                 Did you lock in your guess? If you read the introduction you might have already known the answer. California's GDP in 2023 was $3,870,378.9, 
                 which was 14% of the national GDP of $27.7 trillion. This made California the largest economy in the United States, with Texas and New York 
@@ -574,7 +565,9 @@
                 <input type="range" id="year-slider" min="2000" max="2025" step="5" value="2000">
                 <label for="year-slider">Year: <span id="year-label">2000</span></label>
             </div>
-
+            </p>
+                <a href="https://wits.worldbank.org/CountryProfile/en/Country/BY-COUNTRY/StartYear/2000/EndYear/2001/Indicator/NY-GDP-MKTP-CD#">Source: World Integrated Trade Solution</a>
+            </p>
             <p>
                 As you move the slider through the years, one thing becomes immediately clear: the United States is a titan in the global economy. Its dominance 
                 is represented by the sheer size of its bubble, often towering above others. This reflects its robust industries, from technology and finance to 
