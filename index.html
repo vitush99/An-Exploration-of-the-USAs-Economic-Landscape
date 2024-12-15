@@ -220,9 +220,12 @@
                     <input type="checkbox" id="plot-all">
                 </div>
             </div>
-            <div id="household-charts" style="display: flex; justify-content: space-around; align-items: center;">
-                <div id="chart1" class="household-visualization"></div>
-                <div id="chart2" class="household-visualization"></div>
+            <div id="household-charts-container" style="text-align: center; margin-bottom: 20px;">
+                <h4 style="margin-bottom: 20px;">Median Income by Household Type</h4>
+                <div id="household-charts" style="display: flex; justify-content: space-around; align-items: center;">
+                    <div id="chart1" class="household-visualization"></div>
+                    <div id="chart2" class="household-visualization"></div>
+                </div>
             </div>
             <p> Legend for Plot All Categories: </p>
             <div id="house-legend" style="text-align: center;">
@@ -330,10 +333,21 @@
                 <input type="checkbox" id="age-plot-all">
             </div>
         </div>
-        <div id="age-charts" style="display: flex; justify-content: space-around; align-items: center;">
+        
+        <div id="age-charts-container" style="text-align: center; margin-bottom: 20px;">
+            <h4 style="margin-bottom: 20px;">Median Income by Age Group</h4>
+            <div id="household-charts" style="display: flex; justify-content: space-around; align-items: center;">
+                <div id="age-chart1" class="age-visualization"></div>
+                <div id="age-chart2" class="age-visualization"></div>
+            </div>
+        </div>
+
+
+        <!-- <div id="age-charts" style="display: flex; justify-content: space-around; align-items: center;">
+
             <div id="age-chart1" class="age-visualization"></div>
             <div id="age-chart2" class="age-visualization"></div>
-        </div>
+        </div> -->
         </p>
             <a href="https://www.census.gov/data/tables/time-series/demo/income-poverty/historical-income-households.html">Source: United States Census Bureau</a>
         </p>
@@ -382,7 +396,11 @@
                 and 2024; Zoom out to catch Alaska and Puerto Rico!
             </p>
             <div id="legend" style="margin-top: 20px; padding: 10px; background-color: white; border: 1px solid #ccc; width: 200px;"></div>
-            <div id="chart5" class="map-visualization"></div>
+
+            <div id="map-charts-container" style="text-align: center; margin-bottom: 20px;">
+                <h4 style="margin-bottom: 20px;">Unemployment Rates Across the United States 2024</h4>
+                <div id="chart5" class="map-visualization"></div>
+            </div>
             </p>
                 <a href="https://www.bls.gov/web/laus/laumstrk.htm">Source: U.S. Bureau of Labor Statistics </a>
             </p>
@@ -417,7 +435,12 @@
                 You can hover over each state to see the net change and percentage change in employment over the past 12 months. Don't forget to zoom out to catch Alaska and Puerto Rico!
             </p>
             <div id="legend-employment" style="margin-top: 20px; padding: 10px; background-color: white; border: 1px solid #ccc; width: 200px;"></div>
-            <div id="employment-map" class="map-visualization"></div>
+
+            <div id="employment-charts-container" style="text-align: center; margin-bottom: 20px;">
+                <h4 style="margin-bottom: 20px;">Employment Numbers Across the United States 2024</h4>
+                <div id="employment-map" class="map-visualization"></div>
+            </div>
+
             </p>
                 <a href="https://www.bls.gov/charts/state-employment-and-unemployment/employment-by-state-bar.htm">Source: U.S. Bureau of Labor Statistics </a>
             </p>
@@ -560,11 +583,14 @@
                 five-year increments to see how rankings shift over time.
             <p>
 
-            <div id="bubble-plot-container">
+            <div id="bubble-plot-container" style="text-align: center; margin-bottom: 20px;">
+                <h4 style="margin-bottom: 20px;">Top 10 Countries by GDP (2000-2025)</h4>
                 <div id="bubble-plot"></div>
                 <input type="range" id="year-slider" min="2000" max="2025" step="5" value="2000">
                 <label for="year-slider">Year: <span id="year-label">2000</span></label>
             </div>
+
+
             </p>
                 <a href="https://wits.worldbank.org/CountryProfile/en/Country/BY-COUNTRY/StartYear/2000/EndYear/2001/Indicator/NY-GDP-MKTP-CD#">Source: World Integrated Trade Solution</a>
             </p>
