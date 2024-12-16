@@ -31,31 +31,6 @@ The platform is designed to be accessible, engaging, and educational, allowing u
 
 ---
 
-#### **Getting Started**
-
-1. **Clone the Repository**
-   ```bash
-   git clone [repository-url]
-   cd [repository-folder]
-   ```
-
-2. **Open the Project**
-   - Launch the project by opening `index.html` in your browser.
-
-3. **Dependencies**
-   - This project uses:
-     - [D3.js](https://d3js.org) for interactive visualizations.
-     - [Mapbox GL JS](https://docs.mapbox.com/mapbox-gl-js/) for map rendering.
-
-4. **Explore the Tabs**
-   - **Introduction**: Overview of the project and its goals.
-   - **Economic Metrics**: Analyze household income and age-based earnings.
-   - **State Comparisons**: Explore state-level unemployment and employment data.
-   - **GDP and GSP Analysis**: Compare national and state-level GDP and track global rankings.
-   - **Conclusion**: Key takeaways and the importance of understanding economic trends.
-
----
-
 #### **How It Works**
 
 - **Dynamic Visualizations**: Interactive charts and maps update based on user selections.
